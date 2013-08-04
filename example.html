@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>deep-emit</title>
+  </head>
+  <body>
+    <script src="build/build.js"></script>
+    <script>
+
+    var emit = require('deep-emit');
+
+    function print(s) {
+      document.write(s);
+    }
+
+    var obj = {
+      onfoo: print,
+      some: {
+        notonfoo: print,
+        level: {
+          other: 'ignored',
+          deep: {
+            onfoo: print
+          }
+        }
+      }
+    };
+
+    emit(obj, 'foo', 'bar'); // => barbar
+
+    </script>
+    </script>
+  </body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>deep-emit</title>
+  </head>
+  <body>
+    <script src="../build/build.js"></script>
+    <script>
+
+    // dependencies
+
+    var emit = require('deep-emit');
+
+    //
+    // start tests
+    //
+
+    write('single level');
+    var count = 0;
+    var obj = {};
+    obj.onfoo = function(p) {
+      count++;
+      assert('bar' === p);
+    };
+    obj.onbar = function() {
+      count++;
+    };
+    emit(obj, 'foo', 'bar');
+    assert(1 === count);
+
+    //
+
+    write('single level, multi args');
+    var count = 0;
+    var obj = {};
+    obj.onfoo = function(p1, p2) {
+      count++;
+      assert('bar' === p1);
+      assert('zoo' === p2);
+    };
+    emit(obj, 'foo', 'bar', 'zoo');
+    assert(1 === count);
+
+    //
+
+    write('multi level');
+    var count = 0;
+    var obj = {
+      onfoo: function() { count++; },
+      level: {
+        onfoo: function() { count++; },
+        level: {
+          onfoo: function() { count++; }
+        }
+      }
+    };
+    emit(obj, 'foo');
+    assert(3 === count);
+
+    //
+
+    write('multi level, breadth-first');
+    var s = '';
+    var obj = {
+      level_a: {
+        onfoo: function() { s += 'a'; },
+        level_c: {
+          onfoo: function() { s += 'c'; }
+        }
+      },
+      level_b: {
+        onfoo: function() { s += 'b'; },
+        level_d: {
+          onfoo: function() { s += 'd'; }
+        }
+      }
+    };
+    emit.breadth(obj, 'foo');
+    assert('abcd' === s);
+
+    //
+
+    write('multi level, with filter');
+    var count = 0;
+    var obj = {
+      onfoo: function() { count++; },
+      level_1: {
+        onfoo: function() { count++; },
+        level_2: {
+          onfoo: function() { count++; }
+        }
+      }
+    };
+    emit.filter(function(key) {
+      return 'level_2' != key;
+    });
+    emit(obj, 'foo');
+    assert(2 === count);
+
+    //
+    // end tests
+    //
+
+    write('OK - all tests pass');
+
+    // assert
+
+    function assert(expr, message) {
+      if (!expr) {
+        message = message || 'fail';
+        write(message);
+        throw new Error(message);
+      }
+    }
+
+    function write(s) {
+      document.write(s + '<br>');
+    }
+
+    </script>
+  </body>
+</html>

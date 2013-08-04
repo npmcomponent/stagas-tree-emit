@@ -1,0 +1,15 @@
+{
+  "name": "deep-emit",
+  "version": "0.0.1",
+  "description": "emit events to every listener in object tree",
+  "keywords": ["emitter", "events", "observer", "traverse"],
+  "author": "stagas",
+  "license": "MIT",
+  "dependencies": {
+    "component/each": "*",
+    "component/type": "*",
+    "stagas/traverse-object": "*"
+  },
+  "development": {},
+  "scripts": ["index.js"]
+}
