@@ -30,6 +30,18 @@
 
     //
 
+    write('single level, array');
+    var count = 0;
+    var obj = {};
+    obj.onfoo = [
+      function() { count++; },
+      function() { count++; }
+    ];
+    emit(obj, 'foo', 'bar');
+    assert(2 === count);
+
+    //
+
     write('single level, multi args');
     var count = 0;
     var obj = {};
