@@ -125,6 +125,19 @@
     assert(1 === count);
 
     //
+
+    write('wrap Emitter');
+    var count = 0;
+    var emitter = Emitter({});
+    emitter.onfoo = function(p) {
+      count++;
+      assert('bar' === p);
+    };
+    emit.wrap(emitter);
+    emitter.emit('foo', 'bar');
+    assert(1 === count);
+
+    //
     // end tests
     //
 

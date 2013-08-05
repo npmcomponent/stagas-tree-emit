@@ -95,6 +95,18 @@ emit.intercept = function(emitter, out) {
 };
 
 /**
+ * Wrap `emitter` to tree-emit on itself.
+ *
+ * @param {Emitter} emitter
+ * @return {Emitter} emitter
+ */
+
+emit.wrap = function(emitter) {
+  emit.intercept(emitter, emitter);
+  return emitter;
+};
+
+/**
  * Iterator strategy factory.
  *
  * @param {String} strategy
