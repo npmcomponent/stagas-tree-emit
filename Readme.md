@@ -58,6 +58,15 @@ The passed function is invoked with
 `true` or `false` depending on whether
 to traverse down that property.
 
+### emit.intercept(emitter, out)
+
+Intercept an `emitter` and
+tree-emit its events to `out`.
+
+### emit.wrap(emitter)
+
+Wrap `emitter` to tree-emit on itself.
+
 ## See also
 
 [stagas/traverse-object](https://github.com/stagas/traverse-object)
