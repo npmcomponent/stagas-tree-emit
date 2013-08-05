@@ -1,7 +1,7 @@
 
 /*!
  *
- * deep-emit
+ * tree-emit
  *
  * MIT licensed.
  *

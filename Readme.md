@@ -1,18 +1,18 @@
 
-# deep-emit
+# tree-emit
 
 emit events to every listener in object tree
 
 ## Install
 
 ```sh
-$ component install stagas/deep-emit
+$ component install stagas/tree-emit
 ```
 
 ## Usage
 
 ```js
-var emit = require('deep-emit');
+var emit = require('tree-emit');
 
 function print(s) {
   document.write(s);

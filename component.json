@@ -1,5 +1,5 @@
 {
-  "name": "deep-emit",
+  "name": "tree-emit",
   "version": "0.0.1",
   "description": "emit events to every listener in object tree",
   "keywords": ["emitter", "events", "observer", "traverse"],
