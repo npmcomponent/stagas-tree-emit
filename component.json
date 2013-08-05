@@ -1,6 +1,6 @@
 {
   "name": "tree-emit",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "emit events to every listener in object tree",
   "keywords": ["emitter", "events", "observer", "traverse"],
   "author": "stagas",
