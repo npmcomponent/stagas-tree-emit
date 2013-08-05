@@ -9,6 +9,7 @@
 
     // dependencies
 
+    var Emitter = require('emitter');
     var emit = require('tree-emit');
 
     //
@@ -108,6 +109,20 @@
     });
     emit(obj, 'foo');
     assert(2 === count);
+
+    //
+
+    write('intercept Emitter');
+    var count = 0;
+    var obj = {};
+    var emitter = Emitter({});
+    obj.onfoo = function(p) {
+      count++;
+      assert('bar' === p);
+    };
+    emit.intercept(emitter, obj);
+    emitter.emit('foo', 'bar');
+    assert(1 === count);
 
     //
     // end tests

@@ -10,6 +10,8 @@
     "component/type": "*",
     "stagas/traverse-object": "*"
   },
-  "development": {},
+  "development": {
+    "component/emitter": "*"
+  },
   "scripts": ["index.js"]
 }

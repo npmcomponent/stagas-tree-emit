@@ -73,6 +73,28 @@ emit.filter = function(fn) {
 };
 
 /**
+ * Intercept an `emitter` and
+ * tree-emit its events to `out`.
+ *
+ * @param {Emitter} emitter
+ * @param {Object} out
+ * @return {Emitter} emitter
+ */
+
+emit.intercept = function(emitter, out) {
+  var realEmit = emitter.emit;
+  emitter.emit = function(event) {
+    // emit to regular listeners
+    realEmit.apply(emitter, arguments);
+
+    var params = slice.call(arguments, 1);
+    params.unshift(out, event);
+    emit.apply(this, params);
+  };
+  return emitter;
+};
+
+/**
  * Iterator strategy factory.
  *
  * @param {String} strategy
