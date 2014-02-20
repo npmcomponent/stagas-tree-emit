@@ -12,9 +12,9 @@
  */
 
 var slice = [].slice;
-var each = require('each');
-var type = require('type');
-var traverse = require('traverse-object');
+var each = require('component-each');
+var type = require('component-type');
+var traverse = require('stagas-traverse-object');
 
 /**
  * Emit depth-first.

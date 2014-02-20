@@ -1,0 +1,17 @@
+{
+  "name": "stagas-tree-emit",
+  "description": "emit events to every listener in object tree",
+  "version": "0.1.0",
+  "keywords": [
+    "emitter",
+    "events",
+    "observer",
+    "traverse"
+  ],
+  "dependencies": {
+    "component-each": "git://github.com/npmcomponent/component-each.git",
+    "component-type": "git://github.com/npmcomponent/component-type.git",
+    "stagas-traverse-object": "git://github.com/npmcomponent/stagas-traverse-object.git"
+  },
+  "license": "MIT"
+}
